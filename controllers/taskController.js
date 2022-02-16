@@ -10,7 +10,7 @@ const insertTaskController = async (req, res, next) => {
   try {
     const { task } = req.body;
     const tasks = await insertTaskService(task);
-    return res.status(200).json(tasks);
+    return res.status(201).json(tasks);
   } catch (error) {
     console.log(error.message);
     next(error);
