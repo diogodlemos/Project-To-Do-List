@@ -7,6 +7,7 @@ const {
   getAllTasksController,
   getTaskByIdController,
   deleteTaskByIdController,
+  updateTaskController,
 } = require('./controllers/taskController');
 const { middlewareError } = require('./utils/middlewareError');
 
@@ -16,6 +17,7 @@ app.post('/task', insertTaskController);
 app.get('/task', getAllTasksController);
 app.get('/task/:id', getTaskByIdController);
 app.delete('/task/:id', deleteTaskByIdController);
+app.put('/task/:id', updateTaskController);
 
 app.use(middlewareError);
 

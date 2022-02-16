@@ -27,9 +27,18 @@ const deleteTaskByIdModel = async  (id) => {
   return taskDeleted;
 };
 
+const updateTaskModel = async (id, task) => {
+  const conn = await connection();
+  await conn.collection('tasks').updateOne({ _id: ObjectId(id) }, {
+      $set: { task },
+    });
+  return { id, task };
+};
+
 module.exports = {
   insertTaskModel,
   getAllTasksModel,
   getTaskByIdModel,
   deleteTaskByIdModel,
+  updateTaskModel,
 };
