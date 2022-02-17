@@ -3,7 +3,7 @@ const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
 const urlMongoDb = `mongodb://${process.env.HOST || 'mongodb'}:27017/TaskManager`;
-const url = 'http://localhost:3000';
+const url = 'http://localhost:3001';
 
 describe('POST /task - Create an endpoint for task register ', () => {
   let connection;
@@ -141,22 +141,13 @@ describe('GET /task - Create endpoint for list all tasks', () => {
   });
 
   it('Check if is not posible list specific task by invalid id', async () => {
-    let taskId;
-    // await frisby
-    //   .post(`${url}/task`, { task: "Programar" })
-    //   .expect('status', 201)
-    //   .then((res) => {
-    //     let { body } = res;
-    //     body = JSON.parse(body);
-    //     taskId = body.id;
-    //   });
-      await frisby
-        .get(`${url}/task/1234`)
-        .expect('status', 401)
-        .then((res) => {
-          const { json } = res;
-          
-          expect(json.message).toEqual("Id should be hexadecimal");
-        });
+    await frisby
+      .get(`${url}/task/1234`)
+      .expect('status', 401)
+      .then((res) => {
+        const { json } = res;
+      
+        expect(json.message).toEqual("Id should be hexadecimal");
+      });
   })
 });
