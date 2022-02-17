@@ -1,6 +1,7 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
-const port = 3000;
+const port = 3001;
 
 const {
   insertTaskController,
@@ -13,11 +14,16 @@ const { middlewareError } = require('./utils/middlewareError');
 
 app.use(express.json());
 
-app.post('/task', insertTaskController);
-app.get('/task', getAllTasksController);
-app.get('/task/:id', getTaskByIdController);
-app.delete('/task/:id', deleteTaskByIdController);
-app.put('/task/:id', updateTaskController);
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: 'GET'
+};
+
+app.post('/task', cors(corsOptions), insertTaskController);
+app.get('/task', cors(corsOptions), getAllTasksController);
+app.get('/task/:id', cors(corsOptions), getTaskByIdController);
+app.delete('/task/:id', cors(corsOptions), deleteTaskByIdController);
+app.put('/task/:id', cors(corsOptions), updateTaskController);
 
 app.use(middlewareError);
 
