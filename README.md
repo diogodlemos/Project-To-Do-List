@@ -22,6 +22,32 @@ Backend:
   - ```bash
     npm start
     ```
+## Frontend
+
+Para que a aplicação funcione, é necessário colocar a parte do frontend para funcionar, siga os seguintes passos:
+
+1. Clone o repositório
+  - ```bash
+    git clone git@github.com:diogodlemos/Project-To-Do-List-FrontEnd.git
+    ```
+  - Entre na pasta do repositório que você acabou de clonar:
+    - ```bash
+      cd Project-To-Do-List-FrontEnd
+      ```
+    Entre na pasta app.
+    ```bash
+    cd app
+    ```
+2. Instale as dependências
+  - ```bash
+      npm install
+      ```
+3. Rode o servidor
+  - ```bash
+    npm start
+    ```
+4. Verifique em seu browser a aplicação.
+
 ## Testes
 
 ### Execução dos testes
